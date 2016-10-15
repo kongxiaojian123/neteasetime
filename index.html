@@ -5,7 +5,7 @@
     <meta name="msapplication-tap-highlight" content="no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta content="telephone=no" name="format-detection"/>
-    <title class="pageTitle">netease</title>
+    <title class="pageTitle">neteaseTime</title>
     <link href="http://go.163.com/css/default.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheets/style.css?123" rel="stylesheet" type="text/css"/>
     <script src="http://img2.126.net/ntesrich/ad/zepto.min.js"></script>
@@ -54,6 +54,7 @@
                     endRotate -= offset*.3;
                     this.oldPageY = e.changedTouches[0].pageY;
                 }
+                console.log(22);
             }).on('touchend',function (e) {
                 if(touchLock){
                     var rotate = 360/turntableLength;
@@ -65,6 +66,7 @@
                         endRotate = (Math.floor(endRotate/rotate)+Math.round(endRotate%rotate/rotate))*rotate;
                     }
                 }
+                console.log(11);
             });
             $('.bg-title').on('transitionend webkitTransitionEnd',function (e) {
                 if(e.target==this){
@@ -195,7 +197,7 @@
                 if(!oldTime)oldTime = time;
                 var offsetTime = time.getTime()-oldTime.getTime();
                 oldTime = time;
-                var speed = (endRotate-currentRotate)*.08*offsetTime/(1000/60);
+                var speed = (endRotate-currentRotate)*.2*offsetTime/(1000/60);
                 if(Math.abs(speed)<0.001)speed=0;
                 currentRotate += speed;
                 if(speed==0){
@@ -224,6 +226,7 @@
                     oldIndex=currentIndex;
                 }
                 updateShowRotate(speed);
+                $('.bg-year').html(currentRotate);
                 requestAnimationFrame(updateRotate);
             }
             requestAnimationFrame(updateRotate);
@@ -283,7 +286,7 @@
                     <div class="bg-sprites turntable turntable-20"></div>
                 </div>
                 <div class="bg-sprites bg-selectbg">
-                    <span class="bg-sprites bg-year"></span>
+                    <span class="bg-sprites bg-year" style="color: #ffffff;"></span>
                 </div>
                 <div class="bg-sprites bg-logo2"></div>
             </div>
